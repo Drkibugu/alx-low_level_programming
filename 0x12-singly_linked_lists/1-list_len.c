@@ -2,10 +2,10 @@
 #include "lists.h"
 
 /**
-* list_len - returns the number of elements in a linked list
-* @h: pointer to the list_t list
-*
-* Return: number of elements in h
+* list_len - This returns the number of elements in a linked list
+* @h: This is the pointer to the list_t list
+* Drkibugu
+* Return: The number of elements in h
 */
 size_t list_len(const list_t *h)
 {
