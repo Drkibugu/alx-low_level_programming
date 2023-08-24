@@ -2,7 +2,7 @@
 
 /**
  * main - check the code
- *
+ * Drkibugu
  * Return: Always 0.
  */
 int main(void)
