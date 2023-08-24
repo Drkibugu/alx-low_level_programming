@@ -4,6 +4,7 @@
 /**
 * free_list - This normally frees a linked list
 * @head: list_t this is the list to be freed
+* Drkibugu
 */
 void free_list(list_t *head)
 {
