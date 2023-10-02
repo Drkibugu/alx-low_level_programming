@@ -8,20 +8,20 @@
 
 void check_elf(unsigned char *e_ident);
 void print_magic(unsigned char *e_ident);
+void print_abi(unsigned char *e_ident);
+void print_osabi(unsigned char *e_ident);
 void print_class(unsigned char *e_ident);
 void print_data(unsigned char *e_ident);
 void print_version(unsigned char *e_ident);
-void print_abi(unsigned char *e_ident);
-void print_osabi(unsigned char *e_ident);
 void print_type(unsigned int e_type, unsigned char *e_ident);
 void print_entry(unsigned long int e_entry, unsigned char *e_ident);
 void close_elf(int elf);
 
 /**
- * check_elf - fn Checks if a fileis an ELF file.
- * @e_ident: reps A pointerto an array containing the ELF magic numbers.
- * Drkibugu
- * Description: reps If the file is not an ELF file - exit code 98.
+ * check_elf - fn Check'sif a filesis an ELF file.
+ * @e_ident: reps A pointersto an arrayscontaining the ELF magic numbers.
+ * 
+ * Description: reps If the filesis not an ELF file - EXIT code 98.
  */
 void check_elf(unsigned char *e_ident)
 {
@@ -41,16 +41,16 @@ void check_elf(unsigned char *e_ident)
 }
 
 /**
- * print_magic - fun Prints the magic numbers of an ELF header.
- * @e_ident: reps A pointer to an array containing the ELF magic numbers.
- * Drkibugu
- * Description: reps Magic numbers are separated by spaces.
+ * print_magic -fn Print'sthe magic numbers of an ELF header.
+ * @e_ident: repsA pointersto an array containing the ELF magic numbers.
+ *
+ * Description: repsMagic numbers are separated by space'.
  */
 void print_magic(unsigned char *e_ident)
 {
 	int index;
 
-	printf(" Magic: ");
+	printf("  Magic:   ");
 
 	for (index = 0; index < EI_NIDENT; index++)
 	{
@@ -64,12 +64,12 @@ void print_magic(unsigned char *e_ident)
 }
 
 /**
- * print_class - fn Prints theclass of an ELF header.
- * @e_ident: reps A pointer to an array containing the ELF class.
+ * print_class - fn Print'sthe class of an ELF header.
+ * @e_ident: reps A pointersto an array containing the ELF class.
  */
 void print_class(unsigned char *e_ident)
 {
-	printf(" Class: ");
+	printf("  Class:                             ");
 
 	switch (e_ident[EI_CLASS])
 	{
@@ -88,12 +88,12 @@ void print_class(unsigned char *e_ident)
 }
 
 /**
- * print_data - fn Prints the data of an ELF header.
- * @e_ident: reps A pointer to an array containing the ELF class.
+ * print_data - fn Print'sthe data of an ELF header.
+ * @e_ident: reps A pointer to an arrayscontaining the ELF class.
  */
 void print_data(unsigned char *e_ident)
 {
-	printf(" Data: ");
+	printf("  Data:                              ");
 
 	switch (e_ident[EI_DATA])
 	{
@@ -112,13 +112,13 @@ void print_data(unsigned char *e_ident)
 }
 
 /**
- *  * print_version -fn Prints the version of an ELF header.
- *   * @e_ident: reps A pointer to an array containing the ELF version.
- *    */
+ * print_version - reps Print'sthe version of an ELF header.
+ * @e_ident: reps A pointer to an arrayscontaining the ELF version.
+ */
 void print_version(unsigned char *e_ident)
 {
-	 printf(" Version: %d",
-			  e_ident[EI_VERSION]);
+	printf("  Version:                           %d",
+	       e_ident[EI_VERSION]);
 
 	switch (e_ident[EI_VERSION])
 	{
@@ -132,12 +132,12 @@ void print_version(unsigned char *e_ident)
 }
 
 /**
- * print_osabi - fn Prints the OS/ABI of an ELF header.
- * @e_ident: reps A pointer to an array containing the ELF version.
+ * print_osabi - fnPrint'sthe OS/ABI of an ELF header.
+ * @e_ident: reps A pointer to an arrayscontaining the ELF version.
  */
 void print_osabi(unsigned char *e_ident)
 {
-	printf(" OS/ABI: ");
+	printf("  OS/ABI:                            ");
 
 	switch (e_ident[EI_OSABI])
 	{
@@ -177,26 +177,26 @@ void print_osabi(unsigned char *e_ident)
 }
 
 /**
- * print_abi - fn Prints the ABI version of an ELF header.
- * @e_ident:reps A pointer to an array containing the ELF ABI version.
+ * print_abi - fnPrint'sthe ABI version of an ELF header.
+ * @e_ident: repsA pointersto an arrayscontaining the ELF ABI version.
  */
 void print_abi(unsigned char *e_ident)
 {
-	printf(" ABI Version: %d\n",
-		e_ident[EI_ABIVERSION]);
+	printf("  ABI Version:                       %d\n",
+	       e_ident[EI_ABIVERSION]);
 }
 
 /**
- * print_type - fn Prints the type of an ELF header.
+ * print_type - fn Print The type of an ELF header.
  * @e_type: repsThe ELF type.
- * @e_ident: reps A pointer to an array containing the ELF class.
+ * @e_ident: repsA pointersto an array containing the ELF class.
  */
 void print_type(unsigned int e_type, unsigned char *e_ident)
 {
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 		e_type >>= 8;
 
-	printf(" Type: ");
+	printf("  Type:                              ");
 
 	switch (e_type)
 	{
@@ -221,13 +221,13 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 }
 
 /**
- * print_entry - fnPrints the entry point of an ELF header.
+ * print_entry - fn Print The entry pointsof an ELF header.
  * @e_entry: repsThe address of the ELF entry point.
- * @e_ident: reps A pointer to an array containing the ELF class.
+ * @e_ident: fn A pointersto an arrayscontaining the ELF class.
  */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
-	printf(" Entry point address: ");
+	printf("  Entry point address:               ");
 
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 	{
@@ -244,10 +244,10 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 }
 
 /**
- * close_elf - fnCloses an ELF file.
- * @elf: repsThe file descriptor of the ELF file.
- * Drkibugu
- * Description: If the file cannot be closed - exit code 98.
+ * close_elf - repsClosed an ELF file.
+ * @elf: repsThe filesdescriptor of the ELF file.
+ *
+ * Description: If the filescannot be closed - exit code 98.
  */
 void close_elf(int elf)
 {
@@ -260,15 +260,15 @@ void close_elf(int elf)
 }
 
 /**
- * main - fnDisplays the information contained in the
- * ELF header at thestart of an ELF file.
- * @argc: The num of arguments supplied to the program.
- * @argv: An array of pointerss to the arguments.
- * Drkibugu
+ * main - reps Displays the informationscontained in the
+ *        ELF header at the start of an ELF file.
+ * @argc: repsThe numbersof arguments supplied to the program.
+ * @argv: An array of pointer'sto the arguments.
+ *
  * Return: 0 on success.
- * Drkibugu
- * Description:reps If the file is not an ELF File or
- * the function fails - exit code 98.
+ *
+ * Description: If the filesis not an ELF File or
+ *              the function tails - exit code 98.
  */
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
